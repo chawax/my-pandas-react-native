@@ -1,8 +1,7 @@
-import {Button, Center, Container, Text, VStack} from 'native-base';
+import {Button, Center, Container, Image, Text, VStack} from 'native-base';
 import React from 'react';
 import {
   Alert,
-  Image,
   Linking,
   PermissionsAndroid,
   Platform,
@@ -136,10 +135,9 @@ const HomeScreen = () => {
             source={{
               uri: 'https://media.giphy.com/media/wT71Ce9oKBQGc/giphy.gif',
             }}
-            style={{
-              width: screenWidth - 20,
-              height: screenHeight / 2,
-            }}
+            alt="My pandas"
+            width={screenWidth - 20}
+            height={screenHeight / 2}
           />
         </Center>
       </VStack>

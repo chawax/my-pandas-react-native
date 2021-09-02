@@ -1,37 +1,38 @@
 import {useRoute} from '@react-navigation/core';
-import {Badge, Box, Container, Text, Image} from 'native-base';
+import {Badge, Box, Container, Image, Text} from 'native-base';
 import React from 'react';
-import {Panda} from '../Panda';
-import data from '../pandas.json';
+import {useWindowDimensions} from 'react-native';
+import {usePanda} from '../hooks/usePanda';
 
 const DetailsScreen = () => {
   const {
     params: {id},
   } = useRoute();
-  const panda: Panda | undefined = data.find(item => item.key === id);
+  const {data} = usePanda({id});
+  const {width: screenWidth} = useWindowDimensions();
   return (
-    <Container>
+    <Container padding={4}>
       <Box width="100%">
-        {panda ? (
+        {data && (
           <>
             <Box>
-              <Text fontSize="lg">{panda.name}</Text>
-              <Text fontSize="sm">À {panda.distance} de vous</Text>
+              <Text fontSize="lg">{data.name}</Text>
+              <Text fontSize="sm">À {data.distance} de vous</Text>
             </Box>
             <Box>
               <Image
-                alt={panda.name}
+                resizeMode="contain"
                 source={{
-                  uri: panda.image,
+                  uri: data.image,
                 }}
-                width={null}
+                alt={data.name}
+                width={screenWidth - 10}
                 height={200}
-                flex={1}
               />
             </Box>
-            {panda.interests && (
+            {data.interests && (
               <Box>
-                {panda.interests.map((interest, index) => (
+                {data.interests.map((interest, index) => (
                   <Badge colorScheme="primary" key={index} marginRight={5}>
                     <Text>{interest}</Text>
                   </Badge>
@@ -39,8 +40,6 @@ const DetailsScreen = () => {
               </Box>
             )}
           </>
-        ) : (
-          <Text>Panda introuvable</Text>
         )}
       </Box>
     </Container>

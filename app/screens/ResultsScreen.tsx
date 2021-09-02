@@ -11,8 +11,9 @@ import {
 } from 'native-base';
 import React from 'react';
 import {GeoPosition} from 'react-native-geolocation-service';
+import {usePandas} from '../hooks/usePandas';
 import {Panda} from '../Panda';
-import data from '../pandas.json';
+// import data from '../pandas.json';
 
 const ResultsScreen = () => {
   // @ts-ignore
@@ -23,6 +24,8 @@ const ResultsScreen = () => {
       coords: {latitude, longitude},
     },
   } = routeParams;
+
+  const {data} = usePandas({latitude, longitude});
 
   const handlePress = (item: Panda) => {
     console.log(item);
@@ -60,7 +63,7 @@ const ResultsScreen = () => {
   };
 
   return (
-    <Container padding={4} style={{width: '100%', flex: 1}}>
+    <Container padding={4}>
       <Text fontSize="lg">Les pandas autour de vous :</Text>
       <Text>Latitude : {latitude}</Text>
       <Text>Latitude : {longitude}</Text>
