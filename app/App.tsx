@@ -4,7 +4,13 @@ import React, {Component} from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import RootStack from './RootStack';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+    },
+  },
+});
 
 export default class App extends Component {
   render() {

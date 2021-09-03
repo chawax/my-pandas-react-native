@@ -1,5 +1,5 @@
 import {useRoute} from '@react-navigation/core';
-import {Badge, Box, Container, Image, Text} from 'native-base';
+import {Badge, Box, Flex, HStack, Image, Text} from 'native-base';
 import React from 'react';
 import {useWindowDimensions} from 'react-native';
 import {usePanda} from '../hooks/usePanda';
@@ -11,38 +11,50 @@ const DetailsScreen = () => {
   const {data} = usePanda({id});
   const {width: screenWidth} = useWindowDimensions();
   return (
-    <Container padding={4}>
-      <Box width="100%">
-        {data && (
-          <>
-            <Box>
-              <Text fontSize="lg">{data.name}</Text>
-              <Text fontSize="sm">À {data.distance} de vous</Text>
-            </Box>
-            <Box>
-              <Image
-                resizeMode="contain"
-                source={{
-                  uri: data.image,
-                }}
-                alt={data.name}
-                width={screenWidth - 10}
-                height={200}
-              />
-            </Box>
-            {data.interests && (
-              <Box>
-                {data.interests.map((interest, index) => (
-                  <Badge colorScheme="primary" key={index} marginRight={5}>
-                    <Text>{interest}</Text>
-                  </Badge>
-                ))}
-              </Box>
-            )}
-          </>
-        )}
-      </Box>
-    </Container>
+    <Flex padding={4}>
+      {data && (
+        <>
+          <Box>
+            <Text fontSize="xl" fontWeight="bold">
+              {data.name}
+            </Text>
+            <Text fontSize="sm" marginTop={4}>
+              Se trouve à {data.distance} de vous
+            </Text>
+          </Box>
+          <Box marginTop={4}>
+            <Image
+              resizeMode="contain"
+              source={{
+                uri: data.image,
+              }}
+              alt={data.name}
+              width={screenWidth - 10}
+              height={200}
+            />
+          </Box>
+          {data.interests && (
+            <HStack
+              marginTop={4}
+              alignItems="flex-start"
+              space={{
+                base: 2,
+                md: 4,
+              }}
+              mx={{
+                base: 'auto',
+                md: 0,
+              }}>
+              {data.interests.map((interest, index) => (
+                <Badge key={index} colorScheme="dark">
+                  {interest}
+                </Badge>
+              ))}
+            </HStack>
+          )}
+        </>
+      )}
+    </Flex>
   );
 };
 

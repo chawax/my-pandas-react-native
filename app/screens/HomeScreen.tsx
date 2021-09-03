@@ -1,4 +1,5 @@
-import {Button, Center, Container, Image, Text, VStack} from 'native-base';
+import {useNavigation} from '@react-navigation/native';
+import {Button, Center, Flex, Image, Text, VStack} from 'native-base';
 import React from 'react';
 import {
   Alert,
@@ -12,8 +13,6 @@ import Geolocation, {
   GeoError,
   GeoPosition,
 } from 'react-native-geolocation-service';
-import {useNavigation} from '@react-navigation/native';
-
 import appConfig from '../../app.json';
 
 const HomeScreen = () => {
@@ -124,11 +123,11 @@ const HomeScreen = () => {
   const {height: screenHeight, width: screenWidth} = useWindowDimensions();
 
   return (
-    <Container>
+    <Flex padding={4}>
       <VStack paddingTop={5}>
         <Center>
           <Button colorScheme="primary" onPress={getLocation}>
-            <Text>Rechercher les pandas autour de moi</Text>
+            Rechercher les pandas autour de moi
           </Button>
           <Image
             resizeMode="contain"
@@ -141,7 +140,7 @@ const HomeScreen = () => {
           />
         </Center>
       </VStack>
-    </Container>
+    </Flex>
   );
 };
 
