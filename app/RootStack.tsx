@@ -26,7 +26,11 @@ const RootStack = () => {
         component={ResultsScreen}
         options={{headerTitle: 'Résultats'}}
       />
-      <Stack.Screen name="Details" component={DetailScreen} />
+      <Stack.Screen
+        name="Details"
+        component={DetailScreen}
+        options={{headerTitle: 'Détail'}}
+      />
     </Stack.Navigator>
   );
 };

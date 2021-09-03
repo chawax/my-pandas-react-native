@@ -23,10 +23,10 @@ const ListHeader = ({
 }) => (
   <Box>
     <Text fontSize="lg" fontWeight="bold">
-      Les pandas autour de vous :
+      Les pandas autour de votre position :
     </Text>
     <Text marginLeft={4}>Latitude : {latitude}</Text>
-    <Text marginLeft={4}>Latitude : {longitude}</Text>
+    <Text marginLeft={4}>Longitude : {longitude}</Text>
   </Box>
 );
 

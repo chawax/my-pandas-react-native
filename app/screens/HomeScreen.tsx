@@ -124,9 +124,9 @@ const HomeScreen = () => {
 
   return (
     <Flex padding={4}>
-      <VStack paddingTop={5}>
+      <VStack paddingTop={4}>
         <Center>
-          <Button colorScheme="primary" onPress={getLocation}>
+          <Button colorScheme="primary" onPress={getLocation} marginY={4}>
             Rechercher les pandas autour de moi
           </Button>
           <Image
