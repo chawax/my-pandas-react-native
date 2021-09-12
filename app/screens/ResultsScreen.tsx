@@ -43,13 +43,13 @@ const ResultsScreen = () => {
   const {data} = usePandas({latitude, longitude});
 
   const handlePress = (item: Panda) => {
-    console.log(item);
-    navigation.navigate('Details', {id: item.key});
+    // console.log(item);
+    navigation.navigate('Details', {id: item.id});
   };
 
   const renderItem = ({item}: {item: Panda}) => {
     return (
-      <Pressable key={item.key} onPress={() => handlePress(item)}>
+      <Pressable key={item.id} onPress={() => handlePress(item)}>
         <Box
           bg="primary.600"
           py={4}

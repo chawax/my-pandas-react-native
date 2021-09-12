@@ -1,5 +1,5 @@
 export type Panda = {
-  key: string;
+  id: string;
   name: string;
   distance: string;
   image: string;

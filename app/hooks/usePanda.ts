@@ -8,6 +8,8 @@ type UsePandaParams = {
 
 export const usePanda = ({id}: UsePandaParams) => {
   return useQuery<Panda>(['pandas', id], () =>
-    axios.get(`http://localhost:3004/pandas/${id}`).then(res => res.data),
+    axios
+      .get(`https://fierce-gorge-64433.herokuapp.com/pandas/${id}`)
+      .then(res => res.data),
   );
 };
